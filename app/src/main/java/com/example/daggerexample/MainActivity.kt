@@ -2,17 +2,22 @@ package com.example.daggerexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var loginViewModel: LoginViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+       val loginViewModel = ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)
+
+        Log.d("debag1", loginViewModel.getLog())
+
     }
 }

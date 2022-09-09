@@ -1,8 +1,9 @@
 package com.example.daggerexample
 
 import android.app.Application
+import dagger.android.DaggerApplication
 
-class App: Application() {
+class App: DaggerApplication() {
 
     val appComponent = DaggerApplicationComponent.create()
 
